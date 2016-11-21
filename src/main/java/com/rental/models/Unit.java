@@ -1,4 +1,4 @@
-package com.rental.model;
+package com.rental.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
