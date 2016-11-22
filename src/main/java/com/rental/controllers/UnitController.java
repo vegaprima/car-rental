@@ -12,9 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class UnitController {
 
     @RequestMapping(value = "/car", method = RequestMethod.GET)
-    public ModelAndView hello(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("car/list");
-        return modelAndView;
+    public String list(){
+        return "car/list";
+    }
+
+    @RequestMapping(value = "/car/add", method = RequestMethod.GET)
+    public String add(){
+        return "car/add";
     }
 }

@@ -1,8 +1,6 @@
 package com.rental.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by aluckyanto on 11/20/2016.
@@ -12,12 +10,24 @@ import javax.persistence.Table;
 public class Unit {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-    private Integer brandId;
-    private Integer typeId;
+
+    @OneToOne
+    @JoinColumn(name = "brand_id")
+    private Lookup brand;
+
+    @OneToOne
+    @JoinColumn(name = "type_id")
+    private Lookup type;
+
     private Integer year;
+
     private String policeNumber;
-    private Integer transId;
+
+    @OneToOne
+    @JoinColumn(name = "trans_id")
+    private Lookup transmision;
 
     public Integer getId() {
         return id;
@@ -27,20 +37,20 @@ public class Unit {
         this.id = id;
     }
 
-    public Integer getBrandId() {
-        return brandId;
+    public Lookup getBrand() {
+        return brand;
     }
 
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
+    public void setBrand(Lookup brand) {
+        this.brand = brand;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Lookup getType() {
+        return type;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setType(Lookup type) {
+        this.type = type;
     }
 
     public Integer getYear() {
@@ -59,11 +69,11 @@ public class Unit {
         this.policeNumber = policeNumber;
     }
 
-    public Integer getTransId() {
-        return transId;
+    public Lookup getTransmision() {
+        return transmision;
     }
 
-    public void setTransId(Integer transId) {
-        this.transId = transId;
+    public void setTransmision(Lookup transmision) {
+        this.transmision = transmision;
     }
 }
