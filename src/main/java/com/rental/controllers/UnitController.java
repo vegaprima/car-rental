@@ -1,6 +1,13 @@
 package com.rental.controllers;
 
+import com.rental.models.Unit;
+import com.rental.other.Constants;
+import com.rental.services.LookupService;
+import com.rental.services.UnitService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,13 +18,29 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UnitController {
 
-    @RequestMapping(value = "/car", method = RequestMethod.GET)
+    @Autowired
+    private UnitService unitService;
+
+    @Autowired
+    private LookupService lookupService;
+
+    @RequestMapping(value = "/unit", method = RequestMethod.GET)
     public String list(){
-        return "car/list";
+        return "unit/list";
     }
 
-    @RequestMapping(value = "/car/add", method = RequestMethod.GET)
-    public String add(){
-        return "car/add";
+    @RequestMapping(value = "/unit/add", method = RequestMethod.GET)
+    public String addGet(Model model){
+        model.addAttribute("unit",new Unit());
+        model.addAttribute("lookupBrands",lookupService.findByCodeIgnoreCase(Constants.Lookup.UNIT_BRANDS));
+        model.addAttribute("lookupTypes",lookupService.findByCodeIgnoreCase(Constants.Lookup.UNIT_TYPES));
+        model.addAttribute("lookupTrans",lookupService.findByCodeIgnoreCase(Constants.Lookup.UNIT_TRANS));
+        return "unit/add";
+    }
+
+    @RequestMapping(value = "/unit/add", method = RequestMethod.POST)
+    public String addPost(@ModelAttribute(value = "unit") Unit unit){
+        unitService.unitSave(unit);
+        return "unit/list";
     }
 }

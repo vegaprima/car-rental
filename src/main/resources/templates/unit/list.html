@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head"></head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+    <a class="btn btn-success pull-right" href="add.html" th:href="@{unit/add}">
+        Add
+    </a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Type</th>
+            <th>Year</th>
+            <th>Police Number</th>
+            <th>Transmission</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Toyota</td>
+            <td>test</td>
+            <td>2013</td>
+            <td>B 2013 ZFG</td>
+            <td>Automatic</td>
+            <td>
+                <a class="btn btn-primary" href="add.html" th:href="@{unit/edit}">
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="add.html" th:href="@{unit/delete}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>

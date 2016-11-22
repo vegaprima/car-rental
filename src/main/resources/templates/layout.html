@@ -2,13 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="site-head">
     <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="../public/css/styles.css" th:href="@{/css/styles.css}"/>
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <!--<link rel="icon" href="../public/img/favicon.ico" th:href="@{/img/favicon.ico}"/>-->
     <meta th:include="this :: head" th:remove="tag"/>
 </head>
 <body>
 <header th:fragment="site-header">
+    <title>Car Rental</title>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -16,7 +17,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/car}">Car</a></li>
+                <li><a th:href="@{/unit}">Unit</a></li>
                 <li><a href="#">Page 2</a></li>
                 <li><a href="#">Page 3</a></li>
             </ul>
@@ -24,7 +25,8 @@
     </nav>
 </header>
 <footer th:fragment="site-footer">
-    <script src="../public/js/jquery-3.1.1.min.js" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
 </footer>
 </body>
 </html>

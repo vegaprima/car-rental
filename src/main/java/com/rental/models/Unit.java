@@ -27,7 +27,7 @@ public class Unit {
 
     @OneToOne
     @JoinColumn(name = "trans_id")
-    private Lookup transmision;
+    private Lookup transmission;
 
     public Integer getId() {
         return id;
@@ -69,11 +69,11 @@ public class Unit {
         this.policeNumber = policeNumber;
     }
 
-    public Lookup getTransmision() {
-        return transmision;
+    public Lookup getTransmission() {
+        return transmission;
     }
 
-    public void setTransmision(Lookup transmision) {
-        this.transmision = transmision;
+    public void setTransmission(Lookup transmission) {
+        this.transmission = transmission;
     }
 }
