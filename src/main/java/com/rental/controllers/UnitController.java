@@ -25,7 +25,8 @@ public class UnitController {
     private LookupService lookupService;
 
     @RequestMapping(value = "/unit", method = RequestMethod.GET)
-    public String list(){
+    public String list(Model model){
+        model.addAttribute("units",unitService.unitFindAll());
         return "unit/list";
     }
 

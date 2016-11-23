@@ -18,12 +18,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Toyota</td>
-            <td>test</td>
-            <td>2013</td>
-            <td>B 2013 ZFG</td>
-            <td>Automatic</td>
+        <tr th:each="unit : ${units}">
+            <td th:text="${unit.brand.value}"></td>
+            <td th:text="${unit.type.value}"></td>
+            <td th:text="${unit.year}"></td>
+            <td th:text="${unit.policeNumber}"></td>
+            <td th:text="${unit.transmission.value}"></td>
             <td>
                 <a class="btn btn-primary" href="add.html" th:href="@{unit/edit}">
                     Edit

@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
  * Created by aluckyanto on 11/20/2016.
  */
 @Repository
-public interface UnitRepository extends JpaRepository<Unit, String> {
+public interface UnitRepository extends JpaRepository<Unit, Integer> {
 
 }
