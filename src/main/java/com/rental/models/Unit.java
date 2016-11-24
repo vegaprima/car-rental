@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class Unit {
 
     @Id
-    @SequenceGenerator(name = "unit_id_seq",sequenceName = "unit_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "unit_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @OneToOne

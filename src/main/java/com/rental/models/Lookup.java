@@ -10,8 +10,7 @@ import javax.persistence.*;
 public class Lookup {
 
     @Id
-    @SequenceGenerator(name = "lookup_id_seq", sequenceName = "lookup_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "lookup_id_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String code;
     private String value;
