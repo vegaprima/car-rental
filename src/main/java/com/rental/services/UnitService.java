@@ -10,5 +10,7 @@ import java.util.List;
 public interface UnitService {
     public void unitSave(Unit unit);
     public List<Unit> unitFindAll();
+    public Unit unitFindById(Integer id);
+    public void unitdelete(Integer id);
 
 }

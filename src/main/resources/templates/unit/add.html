@@ -5,6 +5,7 @@
 <div class="container">
     <h2>Unit</h2>
     <form class="form-horizontal" method="post" th:action="@{/unit/add}" th:object="${unit}">
+        <input type="hidden" th:field="*{id}" />
         <div class="form-group">
             <label class="control-label col-sm-2" for="brand">Brand:</label>
             <div class="col-sm-10">
