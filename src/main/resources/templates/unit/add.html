@@ -3,46 +3,46 @@
 <body>
 <header th:replace="layout :: site-header"></header>
 <div class="container">
-    <h2>Unit</h2>
+    <h2 th:text="#{unit}">Unit</h2>
     <form class="form-horizontal" method="post" th:action="@{/unit/add}" th:object="${unit}">
         <input type="hidden" th:field="*{id}" />
         <div class="form-group">
-            <label class="control-label col-sm-2" for="brand">Brand:</label>
+            <label class="control-label col-sm-2" for="brand" th:text="#{brand}+':'">Brand:</label>
             <div class="col-sm-10">
                 <select class="form-control" id="brand" th:field="*{brand.id}">
-                    <option th:hidden="true" value="">Select brand</option>
+                    <option th:hidden="true" value="" th:text="#{placeholder-brand}">Select brand</option>
                     <option th:each="item : ${lookupBrands}"
                             th:value="${item.id}" th:text="${item.value}"></option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="type">Type:</label>
+            <label class="control-label col-sm-2" for="type" th:text="#{type}+':'">Type:</label>
             <div class="col-sm-10">
                 <select class="form-control" id="type"  th:field="*{type.id}">
-                    <option th:hidden="true" value="">Select type</option>
+                    <option th:hidden="true" value="" th:text="#{placeholder-type}">Select type</option>
                     <option th:each="item : ${lookupTypes}"
                             th:value="${item.id}" th:text="${item.value}"></option>
                 </select>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="year">Year:</label>
+            <label class="control-label col-sm-2" for="year" th:text="#{year}+':'">Year:</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="year" placeholder="Enter year"  th:field="*{year}"/>
+                <input type="number" class="form-control" id="year" th:placeholder="#{placeholder-year}" placeholder="Enter year" th:field="*{year}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="police-number">Police Number:</label>
+            <label class="control-label col-sm-2" for="police-number" th:text="#{police-number}+':'">Police Number:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="police-number" placeholder="Enter police number"  th:field="*{policeNumber}"/>
+                <input type="text" class="form-control" id="police-number" th:placeholder="#{placeholder-police-number}" placeholder="Enter police number"  th:field="*{policeNumber}"/>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="transmission">Transmission:</label>
+            <label class="control-label col-sm-2" for="transmission" th:text="#{transmission}+':'">Transmission:</label>
             <div class="col-sm-10">
                 <select class="form-control" id="transmission" name="transmission" th:field="*{transmission.id}">
-                    <option th:hidden="true" value="">Select transmission</option>
+                    <option th:hidden="true" value="" th:text="#{placeholder-transmission}">Select transmission</option>
                     <option th:each="item : ${lookupTrans}"
                             th:value="${item.id}" th:text="${item.value}"></option>
                 </select>
@@ -50,7 +50,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="submit" class="btn btn-success" th:text="#{submit}">Submit</button>
             </div>
         </div>
     </form>
