@@ -1,4 +1,4 @@
-package com.rental.other;
+package com.rental.others;
 
 /**
  * Created by aluckyanto on 11/22/2016.

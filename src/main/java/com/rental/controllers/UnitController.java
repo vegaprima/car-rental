@@ -1,7 +1,7 @@
 package com.rental.controllers;
 
 import com.rental.models.Unit;
-import com.rental.other.Constants;
+import com.rental.others.Constants;
 import com.rental.services.LookupService;
 import com.rental.services.UnitService;
 import org.springframework.beans.factory.annotation.Autowired;
