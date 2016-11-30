@@ -10,4 +10,7 @@ import java.util.List;
 public interface LookupService {
     public void lookupSave(Lookup lookup);
     public List<Lookup> findByCodeIgnoreCase(String code);
+    public List<Lookup> lookupFindAll();
+    public Lookup lookupFindById(Integer id);
+    public void lookupDelete(Integer id);
 }

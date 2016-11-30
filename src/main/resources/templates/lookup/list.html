@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head"></head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+    <a class="btn btn-success pull-right" href="add.html" th:href="@{lookup/add}">
+        Add
+    </a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th th:text="#{code}"></th>
+            <th th:text="#{value}"></th>
+            <th th:text="#{action}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lookup : ${lookups}">
+            <td th:text="${lookup.code}"></td>
+            <td th:text="${lookup.value}"></td>
+            <td>
+                <a class="btn btn-primary" href="add.html" th:href="@{lookup/edit(id=${lookup.id})}" th:text="#{edit}">
+                    Edit
+                </a>
+                <a class="btn btn-danger" href="add.html" th:href="@{lookup/delete(id=${lookup.id})}" th:text="#{delete}">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>

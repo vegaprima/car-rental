@@ -33,7 +33,7 @@ public class UnitServiceImpl implements UnitService {
     }
 
     @Override
-    public void unitdelete(Integer id) {
+    public void unitDelete(Integer id) {
         unitRepository.delete(id);
     }
 }

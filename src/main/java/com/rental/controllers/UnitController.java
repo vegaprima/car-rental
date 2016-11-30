@@ -56,7 +56,7 @@ public class UnitController {
 
     @RequestMapping(value = "/unit/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(name = "id") Integer id) {
-        unitService.unitdelete(id);
+        unitService.unitDelete(id);
         return "redirect:/unit";
     }
 }

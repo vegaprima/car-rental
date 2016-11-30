@@ -25,4 +25,19 @@ public class LookupServiceImpl implements LookupService {
     public List<Lookup> findByCodeIgnoreCase(String code) {
         return lookupRepository.findByCodeIgnoreCase(code);
     }
+
+    @Override
+    public List<Lookup> lookupFindAll() {
+        return lookupRepository.findAll();
+    }
+
+    @Override
+    public Lookup lookupFindById(Integer id) {
+        return lookupRepository.findOne(id);
+    }
+
+    @Override
+    public void lookupDelete(Integer id) {
+        lookupRepository.delete(id);
+    }
 }
