@@ -12,6 +12,10 @@ public class Lookup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "parent")
+    private Lookup parent;
     private String code;
     private String value;
 
@@ -21,6 +25,14 @@ public class Lookup {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Lookup getParent() {
+        return parent;
+    }
+
+    public void setParent(Lookup parent) {
+        this.parent = parent;
     }
 
     public String getCode() {

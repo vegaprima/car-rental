@@ -26,7 +26,7 @@ public class UnitController {
 
     @RequestMapping(value = "/unit", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("units", unitService.unitFindAll());
+        model.addAttribute("units", unitService.findAll());
         return "unit/list";
     }
 
@@ -41,13 +41,13 @@ public class UnitController {
 
     @RequestMapping(value = "/unit/add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute(value = "unit") Unit unit) {
-        unitService.unitSave(unit);
+        unitService.save(unit);
         return "redirect:/unit";
     }
 
     @RequestMapping(value = "/unit/edit", method = RequestMethod.GET)
     public String edit(@RequestParam(name = "id") Integer id, Model model) {
-        model.addAttribute("unit", unitService.unitFindById(id));
+        model.addAttribute("unit", unitService.findById(id));
         model.addAttribute("lookupBrands", lookupService.findByCodeIgnoreCase(Constants.Lookup.UNIT_BRANDS));
         model.addAttribute("lookupTypes", lookupService.findByCodeIgnoreCase(Constants.Lookup.UNIT_TYPES));
         model.addAttribute("lookupTrans", lookupService.findByCodeIgnoreCase(Constants.Lookup.UNIT_TRANS));
@@ -56,7 +56,7 @@ public class UnitController {
 
     @RequestMapping(value = "/unit/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(name = "id") Integer id) {
-        unitService.unitDelete(id);
+        unitService.delete(id);
         return "redirect:/unit";
     }
 }

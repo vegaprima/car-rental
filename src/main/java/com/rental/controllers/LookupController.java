@@ -21,31 +21,33 @@ public class LookupController {
 
     @RequestMapping(value = "/lookup", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("lookups", lookupService.lookupFindAll());
+        model.addAttribute("lookups", lookupService.findAll());
         return "lookup/list";
     }
 
     @RequestMapping(value = "/lookup/add", method = RequestMethod.GET)
     public String addGet(Model model) {
         model.addAttribute("lookup", new Lookup());
+        model.addAttribute("lookupParents", lookupService.findAll());
         return "lookup/add";
     }
 
     @RequestMapping(value = "/lookup/add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute(value = "lookup") Lookup lookup) {
-        lookupService.lookupSave(lookup);
+        lookupService.save(lookup);
         return "redirect:/lookup";
     }
 
     @RequestMapping(value = "/lookup/edit", method = RequestMethod.GET)
     public String edit(@RequestParam(name = "id") Integer id, Model model) {
-        model.addAttribute("lookup", lookupService.lookupFindById(id));
+        model.addAttribute("lookup", lookupService.findById(id));
+        model.addAttribute("lookupParents", lookupService.findByIdNot(id));
         return "lookup/add";
     }
 
     @RequestMapping(value = "/lookup/delete", method = RequestMethod.GET)
     public String delete(@RequestParam(name = "id") Integer id) {
-        lookupService.lookupDelete(id);
+        lookupService.delete(id);
         return "redirect:/lookup";
     }
 }

@@ -12,4 +12,5 @@ import java.util.List;
 @Repository
 public interface LookupRepository extends JpaRepository<Lookup, Integer> {
     public List<Lookup> findByCodeIgnoreCase(String code);
+    public List<Lookup> findByIdNot(Integer id);
 }

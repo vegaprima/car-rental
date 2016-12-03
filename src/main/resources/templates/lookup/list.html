@@ -9,6 +9,7 @@
     <table class="table table-hover">
         <thead>
         <tr>
+            <th th:text="#{parent}"></th>
             <th th:text="#{code}"></th>
             <th th:text="#{value}"></th>
             <th th:text="#{action}"></th>
@@ -16,6 +17,7 @@
         </thead>
         <tbody>
         <tr th:each="lookup : ${lookups}">
+            <td th:text="${lookup.parent==null?'':lookup.parent.value}"></td>
             <td th:text="${lookup.code}"></td>
             <td th:text="${lookup.value}"></td>
             <td>

@@ -17,7 +17,8 @@ public class LookupServiceImpl implements LookupService {
     private LookupRepository lookupRepository;
 
     @Override
-    public void lookupSave(Lookup lookup) {
+    public void save(Lookup lookup) {
+        lookup.setCode(lookup.getCode().toUpperCase());
         lookupRepository.save(lookup);
     }
 
@@ -27,17 +28,22 @@ public class LookupServiceImpl implements LookupService {
     }
 
     @Override
-    public List<Lookup> lookupFindAll() {
+    public List<Lookup> findAll() {
         return lookupRepository.findAll();
     }
 
     @Override
-    public Lookup lookupFindById(Integer id) {
+    public Lookup findById(Integer id) {
         return lookupRepository.findOne(id);
     }
 
     @Override
-    public void lookupDelete(Integer id) {
+    public List<Lookup> findByIdNot(Integer id) {
+        return lookupRepository.findByIdNot(id);
+    }
+
+    @Override
+    public void delete(Integer id) {
         lookupRepository.delete(id);
     }
 }

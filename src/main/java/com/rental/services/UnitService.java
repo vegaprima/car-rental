@@ -8,9 +8,9 @@ import java.util.List;
  * Created by aluckyanto on 11/21/2016.
  */
 public interface UnitService {
-    public void unitSave(Unit unit);
-    public List<Unit> unitFindAll();
-    public Unit unitFindById(Integer id);
-    public void unitDelete(Integer id);
+    public void save(Unit unit);
+    public List<Unit> findAll();
+    public Unit findById(Integer id);
+    public void delete(Integer id);
 
 }

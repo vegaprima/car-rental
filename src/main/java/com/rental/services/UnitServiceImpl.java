@@ -18,22 +18,22 @@ public class UnitServiceImpl implements UnitService {
 
 
     @Override
-    public void unitSave(Unit unit) {
+    public void save(Unit unit) {
         unitRepository.save(unit);
     }
 
     @Override
-    public List<Unit> unitFindAll() {
+    public List<Unit> findAll() {
         return unitRepository.findAll();
     }
 
     @Override
-    public Unit unitFindById(Integer id) {
+    public Unit findById(Integer id) {
         return unitRepository.findOne(id);
     }
 
     @Override
-    public void unitDelete(Integer id) {
+    public void delete(Integer id) {
         unitRepository.delete(id);
     }
 }
