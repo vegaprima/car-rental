@@ -1,41 +1,67 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: site-head"></head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Unit Page</title>
+</head>
 <body>
-<header th:replace="layout :: site-header"></header>
-<div class="container">
-    <a class="btn btn-success pull-right" href="add.html" th:href="@{unit/add}">
-        Add
-    </a>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th th:text="#{brand}"></th>
-            <th th:text="#{type}"></th>
-            <th th:text="#{year}"></th>
-            <th th:text="#{police-number}"></th>
-            <th th:text="#{transmission}"></th>
-            <th th:text="#{action}"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="unit : ${units}">
-            <td th:text="${unit.brand.value}"></td>
-            <td th:text="${unit.type.value}"></td>
-            <td th:text="${unit.year}"></td>
-            <td th:text="${unit.policeNumber}"></td>
-            <td th:text="${unit.transmission.value}"></td>
-            <td>
-                <a class="btn btn-primary" href="add.html" th:href="@{unit/edit(id=${unit.id})}" th:text="#{edit}">
-                    Edit
-                </a>
-                <a class="btn btn-danger confirmation" href="add.html" th:href="@{unit/delete(id=${unit.id})}" th:text="#{delete}">
-                    Delete
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+<section layout:fragment="header">
+    <h1>
+        Unit
+        <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Unit</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+	<div class="row">
+    	<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+	    			<h3 class="box-title">List</h3>
+	    		</div>
+	    		<div class="box-body no-padding">
+	    			<table class="table table-striped">
+	    			<thead>
+			        <tr>
+			            <th th:text="#{brand}"></th>
+			            <th th:text="#{type}"></th>
+			            <th th:text="#{year}"></th>
+			            <th th:text="#{police-number}"></th>
+			            <th th:text="#{transmission}"></th>
+			            <th th:text="#{action}"></th>
+			        </tr>
+			        </thead>
+			        <tbody>
+			        <tr th:each="unit : ${units}">
+			            <td th:text="${unit.brand.value}"></td>
+			            <td th:text="${unit.type.value}"></td>
+			            <td th:text="${unit.year}"></td>
+			            <td th:text="${unit.policeNumber}"></td>
+			            <td th:text="${unit.transmission.value}"></td>
+			            <td>
+			                <a class="btn btn-primary" href="add.html" th:href="@{unit/edit(id=${unit.id})}" th:text="#{edit}">
+			                    Edit
+			                </a>
+			                <a class="btn btn-danger confirmation" href="add.html" th:href="@{unit/delete(id=${unit.id})}" th:text="#{delete}">
+			                    Delete
+			                </a>
+			            </td>
+			        </tr>
+			        </tbody>
+	    			</table>
+    			</div>
+    			<div class="box-footer clearfix no-border">
+		    		<a class="btn btn-default pull-right" href="add.html" th:href="@{unit/add}">
+		    			<i class="fa fa-plus">Add Unit</i>
+		    		</a>
+		    	</div>
+   			</div>
+		</div>
+	</div>
 </div>
-<footer th:replace="layout :: site-footer"></footer>
 </body>
 </html>

@@ -1,0 +1,34 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search..."/>
+            <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active treeview">
+            <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="index.html" th:href="@{/}"><i class="fa fa-circle-o"></i> Welcome Page</a></li>
+                <li><a href="/unit/list.html" th:href="@{/unit}" th:text="#{unit}"><i class="fa fa-circle-o"></i> Unit</a></li>
+                <li><a th:href="@{/lookup}" th:text="#{lookup}"><i class="fa fa-circle-o"/> Lookup</a></li>
+                <li><a th:href="@{/driver}" th:text="#{driver}"><i class="fa fa-circle-o"/> Driver</a></li>
+<!--                 <li><a href="#">Page 3</a></li> -->
+            </ul>
+        </li>
+	</ul>
+</section>
+<!-- /.sidebar -->

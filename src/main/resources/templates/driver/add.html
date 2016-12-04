@@ -1,105 +1,128 @@
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: site-head"></head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Driver Page</title>
+</head>
 <body>
-<header th:replace="layout :: site-header"></header>
-<div class="container">
-    <h2 th:text="#{driver}">Unit</h2>
-    <form class="form-horizontal" method="post" th:action="@{/driver/add}" th:object="${driver}">
-        <input type="hidden" th:field="*{id}" />
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="name" th:text="#{name}+':'"></label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" th:placeholder="#{name}" th:field="*{name}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="gender" th:text="#{gender}+':'"></label>
-            <div class="col-sm-10">
-                <select class="form-control" id="gender"  th:field="*{gender.id}">
-                    <option th:hidden="true" value="" th:text="#{gender}"></option>
-                    <option th:each="item : ${lookupGenders}"
-                            th:value="${item.id}" th:text="${item.value}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="place-of-birth" th:text="#{place-of-birth}+':'"></label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="place-of-birth" th:placeholder="#{place-of-birth}" th:field="*{placeOfBirth}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="date-of-birth" th:text="#{date-of-birth}+':'"></label>
-            <div class="col-sm-10">
-                <input type="date" class="form-control" id="date-of-birth" th:placeholder="#{date-of-birth}" th:field="*{dateOfBirth}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="telp" th:text="#{telp}+':'"></label>
-            <div class="col-sm-10">
-                <input type="tel" class="form-control" id="telp" th:placeholder="#{telp}" th:field="*{telp}"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="address" th:text="#{address}+':'"></label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="3" id="address" th:placeholder="#{address}" th:field="*{address}"></textarea>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="province" th:text="#{province}+':'"></label>
-            <div class="col-sm-10">
-                <select class="form-control" id="province"  th:field="*{province.id}">
-                    <option th:hidden="true" value="" th:text="#{province}"></option>
-                    <option th:each="item : ${lookupProvinces}"
-                            th:value="${item.id}" th:text="${item.value}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="city" th:text="#{city}+':'"></label>
-            <div class="col-sm-10">
-                <select class="form-control" id="city"  th:field="*{city.id}">
-                    <option th:hidden="true" value="" th:text="#{city}"></option>
-                    <option th:each="item : ${lookupCities}"
-                            th:value="${item.id}" th:text="${item.value}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="licenseType" th:text="#{license-type}+':'"></label>
-            <div class="col-sm-10">
-                <select class="form-control" id="licenseType"  th:field="*{licenseType.id}">
-                    <option th:hidden="true" value="" th:text="#{license-type}"></option>
-                    <option th:each="item : ${lookupLicenseTypes}"
-                            th:value="${item.id}" th:text="${item.value}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="years-of-experience" th:text="#{years-of-experience}+':'"></label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" rows="3" id="years-of-experience" th:placeholder="#{years-of-experience}" th:field="*{yearsOfExperience}" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="status" th:text="#{status}+':'"></label>
-            <div class="col-sm-10">
-                <select class="form-control" id="status"  th:field="*{status.id}">
-                    <option th:hidden="true" value="" th:text="#{status}"></option>
-                    <option th:each="item : ${lookupStatuses}"
-                            th:value="${item.id}" th:text="${item.value}"></option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success" th:text="#{submit}">Submit</button>
-                <a th:href="@{/driver}" class="btn btn-danger" th:text="#{cancel}">Cancel</a>
-            </div>
-        </div>
-    </form>
+<section layout:fragment="header">
+    <h1>
+        Driver
+        <small>List</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Driver</li>
+    </ol>
+</section>
+<div layout:fragment="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box box-primary">
+				<div class="box-header with-border">
+					<h3 class="box-title">Driver</h3>
+				</div>
+				<div class="box-body">
+						<form class="form-horizontal" method="post" th:action="@{/driver/add}" th:object="${driver}">
+				        <input type="hidden" th:field="*{id}" />
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="name" th:text="#{name}+':'"></label>
+				            <div class="col-sm-10">
+				                <input type="text" class="form-control" id="name" th:placeholder="#{name}" th:field="*{name}"/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="gender" th:text="#{gender}+':'"></label>
+				            <div class="col-sm-10">
+				                <select class="form-control" id="gender"  th:field="*{gender.id}">
+				                    <option th:hidden="true" value="" th:text="#{gender}"></option>
+				                    <option th:each="item : ${lookupGenders}"
+				                            th:value="${item.id}" th:text="${item.value}"></option>
+				                </select>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="place-of-birth" th:text="#{place-of-birth}+':'"></label>
+				            <div class="col-sm-10">
+				                <input type="text" class="form-control" id="place-of-birth" th:placeholder="#{place-of-birth}" th:field="*{placeOfBirth}"/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="date-of-birth" th:text="#{date-of-birth}+':'"></label>
+				            <div class="col-sm-10">
+				                <input type="date" class="form-control" id="date-of-birth" th:placeholder="#{date-of-birth}" th:field="*{dateOfBirth}"/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="telp" th:text="#{telp}+':'"></label>
+				            <div class="col-sm-10">
+				                <input type="tel" class="form-control" id="telp" th:placeholder="#{telp}" th:field="*{telp}"/>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="address" th:text="#{address}+':'"></label>
+				            <div class="col-sm-10">
+				                <textarea class="form-control" rows="3" id="address" th:placeholder="#{address}" th:field="*{address}"></textarea>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="province" th:text="#{province}+':'"></label>
+				            <div class="col-sm-10">
+				                <select class="form-control" id="province"  th:field="*{province.id}">
+				                    <option th:hidden="true" value="" th:text="#{province}"></option>
+				                    <option th:each="item : ${lookupProvinces}"
+				                            th:value="${item.id}" th:text="${item.value}"></option>
+				                </select>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="city" th:text="#{city}+':'"></label>
+				            <div class="col-sm-10">
+				                <select class="form-control" id="city"  th:field="*{city.id}">
+				                    <option th:hidden="true" value="" th:text="#{city}"></option>
+				                    <option th:each="item : ${lookupCities}"
+				                            th:value="${item.id}" th:text="${item.value}"></option>
+				                </select>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="licenseType" th:text="#{license-type}+':'"></label>
+				            <div class="col-sm-10">
+				                <select class="form-control" id="licenseType"  th:field="*{licenseType.id}">
+				                    <option th:hidden="true" value="" th:text="#{license-type}"></option>
+				                    <option th:each="item : ${lookupLicenseTypes}"
+				                            th:value="${item.id}" th:text="${item.value}"></option>
+				                </select>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="years-of-experience" th:text="#{years-of-experience}+':'"></label>
+				            <div class="col-sm-10">
+				                <input type="number" class="form-control" rows="3" id="years-of-experience" th:placeholder="#{years-of-experience}" th:field="*{yearsOfExperience}" />
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <label class="control-label col-sm-2" for="status" th:text="#{status}+':'"></label>
+				            <div class="col-sm-10">
+				                <select class="form-control" id="status"  th:field="*{status.id}">
+				                    <option th:hidden="true" value="" th:text="#{status}"></option>
+				                    <option th:each="item : ${lookupStatuses}"
+				                            th:value="${item.id}" th:text="${item.value}"></option>
+				                </select>
+				            </div>
+				        </div>
+				        <div class="form-group">
+				            <div class="col-sm-offset-2 col-sm-10">
+				                <button type="submit" class="btn btn-success" th:text="#{submit}">Submit</button>
+				                <a th:href="@{/driver}" class="btn btn-danger" th:text="#{cancel}">Cancel</a>
+				            </div>
+				        </div>
+				    </form>				
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<footer th:replace="layout :: site-footer"></footer>
 </body>
 </html>
