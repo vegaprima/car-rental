@@ -19,6 +19,5 @@ target/
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
-.nb-gradle/
+.nb-gradle/src/main/resources/application.properties
